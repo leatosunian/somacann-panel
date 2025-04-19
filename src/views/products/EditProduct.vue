@@ -155,13 +155,13 @@
                   <!-- Last name -->
                   <div class="form-group">
                     <!-- Label -->
-                    <label class="mb-1 form-label"> Stock </label>
+                    <label class="mb-1 form-label">Variantes</label>
                     <!-- Input -->
                     <input
-                      type="number"
+                      type="text"
                       class="form-control"
-                      placeholder="Ingresa el stock"
-                      v-model="product.stock"
+                      placeholder="Ingresa las variantes (ej. color)"
+                      v-model="product.str_variant"
                     />
                   </div>
                 </div>
@@ -200,17 +200,11 @@
                       for="file-upload"
                       class="btn btn-sm"
                       style="
-                        background: linear-gradient(
-                          -50.6deg,
-                          rgb(179 134 149) -18.3%,
-                          rgb(67, 54, 74) 16.4%,
-                          rgb(47, 48, 67) 68.2%,
-                          rgb(69 41 90) 99.1%
-                        );
-                        color: #f9f9f9;
+                        background: rgb(47, 48, 67) 68.2%;
+                      color: white;
                       "
                     >
-                      Subir imagen
+                      Cambiar imagen
                     </label>
                     <input
                       style="display: none"
@@ -279,16 +273,7 @@
               <!-- Button -->
               <button
                 class="btn col-sm-5 col-md-5 col-lg-3"
-                style="
-                  background: linear-gradient(
-                    120.6deg,
-                    rgb(179 134 149) -18.3%,
-                    rgb(67, 54, 74) 16.4%,
-                    rgb(47, 48, 67) 68.2%,
-                    rgb(69 41 90) 99.1%
-                  );
-                  color: #f9f9f9;
-                "
+                style="background: rgb(47, 48, 67) 68.2%; color: white"
                 v-on:click="validate()"
               >
                 Guardar cambios
@@ -340,14 +325,8 @@
                   <button
                     class="btn btn-block"
                     style="
-                      background: linear-gradient(
-                        120.6deg,
-                        rgb(179 134 149) -18.3%,
-                        rgb(67, 54, 74) 16.4%,
-                        rgb(47, 48, 67) 68.2%,
-                        rgb(69 41 90) 99.1%
-                      );
-                      color: black;
+                      background: rgb(47, 48, 67) 68.2%;
+                      color: white;
                       width: 100% !important;
                     "
                     v-on:click="validateVariant()"
@@ -594,7 +573,7 @@ export default {
     },
 
     SKUGen() {
-      console.log('this.product', this.product)
+      console.log("this.product", this.product);
       const SKU =
         this.product.name.substr(0, 3) +
         "" +
@@ -605,7 +584,6 @@ export default {
         this.variant.provider.substr(0, 3);
       return SKU.toUpperCase();
     },
-
 
     validateVariant() {
       if (!this.variant.variant || !this.variant.provider) {
@@ -618,15 +596,15 @@ export default {
       }
 
       this.variant.product = this.$route.params.id;
-      console.log('this.variant.product', this.variant.product)
+      console.log("this.variant.product", this.variant.product);
       this.variant.skuCode = this.SKUGen();
-      console.log('this.variant.skuCode', this.variant.skuCode)
+      console.log("this.variant.skuCode", this.variant.skuCode);
       this.saveVariant();
     },
 
     saveVariant() {
       const token = localStorage.getItem("token");
-      console.log('this.variant save variant', this.variant)
+      console.log("this.variant save variant", this.variant);
       axios
         .post(this.$url + "/variants/save", this.variant, {
           headers: {
