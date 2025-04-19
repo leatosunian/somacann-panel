@@ -307,6 +307,8 @@
 
         createProduct() {
           const formData = new FormData()
+          console.log(this.product);
+          
           formData.append('name', this.product.name)
           formData.append('description', this.product.description)
           formData.append('price', this.product.price)
@@ -314,6 +316,7 @@
           formData.append('subcategory', this.product.subcategory)
           formData.append('image', this.product.image)
           formData.append('stock', this.product.stock)
+
           axios.post(this.$url+'/products/add', formData, {
             headers: {
               "Content-Type": 'multipart/form-data',
