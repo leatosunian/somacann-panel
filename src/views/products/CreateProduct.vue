@@ -147,17 +147,7 @@
               
                   </div>
 
-                  <div class="col-12 col-md-6">
-                    <!-- Last name -->
-                    <div class="form-group">
-                      <!-- Label -->
-                      <label class="mb-1 form-label">
-                        Stock
-                      </label>
-                      <!-- Input -->
-                      <input type="number" class="form-control" placeholder="Ingresa la variante del producto" v-model="product.stock">
-                    </div>
-                  </div>
+       
 
                   <div class="flex row justify-content-left align-items-center" style="gap:20px; padding:10px; margin: 0 auto;">
                     <div class="" style="margin-left:10px;width: 250px; height :60px; display:flex; justify-content:center; align-items:center;">
@@ -315,7 +305,7 @@
           formData.append('category', this.product.category)
           formData.append('subcategory', this.product.subcategory)
           formData.append('image', this.product.image)
-          formData.append('stock', this.product.stock)
+          formData.append('stock', 0)
 
           axios.post(this.$url+'/products/add', formData, {
             headers: {

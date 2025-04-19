@@ -155,7 +155,11 @@
                   <!-- Last name -->
                   <div class="form-group">
                     <!-- Label -->
-                    <label class="mb-1 form-label">Variantes</label>
+                    <label class="mb-1 form-label">Variedad</label
+                    ><span
+                      style="margin-left: 5px; font-size: 12px; color: #95aac9"
+                      >(ej. Color)</span
+                    >
                     <!-- Input -->
                     <input
                       type="text"
@@ -199,10 +203,7 @@
                     <label
                       for="file-upload"
                       class="btn btn-sm"
-                      style="
-                        background: rgb(47, 48, 67) 68.2%;
-                      color: white;
-                      "
+                      style="background: rgb(47, 48, 67) 68.2%; color: white"
                     >
                       Cambiar imagen
                     </label>
@@ -294,20 +295,11 @@
 
               <div class="mb-5 row">
                 <div class="col-lg-4">
-                  <small class="text-muted"> Marca </small>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Nombre de marca"
-                    v-model="variant.provider"
-                  />
-                </div>
-                <div class="col-lg-4">
                   <small class="text-muted"> Variedad </small>
                   <input
                     type="text"
                     class="form-control"
-                    placeholder="Tallas, colores..."
+                    placeholder="ej. Rojo"
                     v-model="variant.variant"
                   />
                 </div>
@@ -573,15 +565,12 @@ export default {
     },
 
     SKUGen() {
-      console.log("this.product", this.product);
       const SKU =
         this.product.name.substr(0, 3) +
         "" +
         this.product.str_variant.substr(0, 3) +
         "" +
-        this.variant.variant.substr(0, 3) +
-        "" +
-        this.variant.provider.substr(0, 3);
+        this.variant.variant.substr(0, 3);
       return SKU.toUpperCase();
     },
 
@@ -594,18 +583,15 @@ export default {
           type: "error",
         });
       }
-
+      this.variant.provider = "none";
       this.variant.product = this.$route.params.id;
-      console.log("this.variant.product", this.variant.product);
       this.variant.skuCode = this.SKUGen();
-      console.log("this.variant.skuCode", this.variant.skuCode);
       this.saveVariant();
     },
 
     saveVariant() {
       const token = localStorage.getItem("token");
-      console.log("this.variant save variant", this.variant);
-      axios
+      this.variant.axios
         .post(this.$url + "/variants/save", this.variant, {
           headers: {
             "Content-Type": "application/json",
