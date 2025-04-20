@@ -575,7 +575,7 @@ export default {
     },
 
     validateVariant() {
-      if (!this.variant.variant || !this.variant.provider) {
+      if (!this.variant.variant) {
         this.$notify({
           group: "foo",
           title: "Error",
@@ -591,7 +591,7 @@ export default {
 
     saveVariant() {
       const token = localStorage.getItem("token");
-      this.variant.axios
+      axios
         .post(this.$url + "/variants/save", this.variant, {
           headers: {
             "Content-Type": "application/json",
