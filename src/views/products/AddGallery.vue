@@ -78,15 +78,10 @@
                       <button
                         class="btn"
                         style="
-                          background: linear-gradient(
-                            120.6deg,
-                            rgb(179 134 149) -18.3%,
-                            rgb(67, 54, 74) 16.4%,
-                            rgb(47, 48, 67) 68.2%,
-                            rgb(69 41 90) 99.1%
-                          );
-                          color: #f9f9f9;
-                        "
+                        background: rgb(47, 48, 67) 68.2%;
+                        color: white;
+                        
+                      "
                         v-on:click="addImage()"
                       >
                         <i class="fe fe-upload"></i>

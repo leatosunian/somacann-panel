@@ -42,7 +42,7 @@
                     <span style="font-size:17px;font-weight:600;">
                       Ingresos totales
                     </span>
-                    <span style="font-size:20px;font-weight:600;">
+                    <span style="font-size:16px;font-weight:600;">
                       {{priceConverter(earnings)}}
                     </span>
                     
@@ -53,22 +53,7 @@
               </div>
             </div>
 
-            <router-link style="cursor:pointer;" to="/orders">
-              <div class="cardItemData" style="background: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);">
-                <div class="cardItemDataItems">
-                  <div style="display:flex;flex-direction:column;height:fit-content;">
-                    <span style="font-size:17px;font-weight:600;">
-                      Pedidos
-                    </span>
-                    <span style="font-size:20px;font-weight:600;">
-                      {{salesLength}}
-                    </span>
-                    
-                  </div>
-                  <img src="@/assets/give-money.png" alt="">
-                </div>
-              </div>
-            </router-link>
+
             
             <router-link style="cursor:pointer;" to="/allclients">
               <div class="cardItemData" style="background: linear-gradient(45deg, #874da2 0%, #c43a30 100%);">
@@ -87,12 +72,29 @@
               </div>
             </router-link>
 
+            <router-link style="cursor:pointer;" to="/orders">
+              <div class="cardItemData" style="background: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);">
+                <div class="cardItemDataItems">
+                  <div style="display:flex;flex-direction:column;height:fit-content;">
+                    <span style="font-size:17px;font-weight:600;">
+                      Pedidos
+                    </span>
+                    <span style="font-size:20px;font-weight:600;">
+                      {{salesLength}}
+                    </span>
+                    
+                  </div>
+                  <img src="@/assets/give-money.png" alt="">
+                </div>
+              </div>
+            </router-link>
+
             <router-link style="cursor:pointer;" to="/orders/pending">
               <div class="cardItemData" style="background: linear-gradient(135deg, rgb(255, 168, 168) 10%, rgb(252, 255, 0) 100%);">
                 <div class="cardItemDataItems">
                   <div style="display:flex;flex-direction:column;height:fit-content;">
                     <span style="font-size:17px;font-weight:600;">
-                      Pedidos pendientes
+                      Pendientes
                     </span>
                     <span style="font-size:20px;font-weight:600;">
                       {{ ventas.length }}

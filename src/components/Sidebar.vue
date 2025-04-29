@@ -224,7 +224,7 @@
 }
 
 .logoIMG {
-  width: 135px;
+  width: 110px;
 }
 .navProfileSett {
   display:flex; 
@@ -244,7 +244,7 @@
 
 @media (min-width: 778px){
   .logoIMG {
-    width: 100px;
+    width: 100px !important;
   }
   
   
