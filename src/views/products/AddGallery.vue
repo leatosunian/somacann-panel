@@ -105,7 +105,7 @@
                   <div class="card">
                     <a href="project-overview.html">
                       <img
-                        :src="$url + '/getGallery/' + item.image"
+                        :src="item.image"
                         alt="..."
                         class="card-img-top"
                       />

@@ -449,7 +449,7 @@ export default {
         .then((response) => {
           const { data } = response;
           this.product = data;
-          this.str_image = this.$url + "/getImage/" + this.product.image;
+          this.str_image = this.product.image;
         })
         .catch((error) => {
           console.log(error);
@@ -461,6 +461,7 @@ export default {
 
       if ($event.target.files.length >= 1) {
         image = $event.target.files[0];
+        
       }
 
       if (image.size <= 2480000) {
@@ -498,7 +499,6 @@ export default {
         !this.product.price ||
         !this.product.image ||
         !this.product.category ||
-        !this.product.stock ||
         !this.product.subcategory
       ) {
         return this.$notify({
