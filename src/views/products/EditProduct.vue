@@ -135,23 +135,6 @@
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <!-- Phone -->
-                  <div class="form-group">
-                    <!-- Label -->
-                    <label class="form-label"> Descripción </label>
-
-                    <!-- Input -->
-                    <textarea
-                      class="form-control"
-                      id=""
-                      rows="3"
-                      placeholder="Ingresa una descripción"
-                      v-model="product.description"
-                    ></textarea>
-                  </div>
-                </div>
-
-                <div class="col-12 col-md-6">
                   <!-- Last name -->
                   <div class="form-group">
                     <!-- Label -->
@@ -167,6 +150,42 @@
                       placeholder="Ingresa las variantes (ej. color)"
                       v-model="product.str_variant"
                     />
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6" v-if="variants.length == 0">
+                  <!-- Last name -->
+                  <div class="form-group">
+                    <!-- Label -->
+                    <label class="mb-1 form-label">Stock</label
+                    ><span
+                      style="margin-left: 5px; font-size: 12px; color: #95aac9"
+                      >(sin variantes)</span
+                    >
+                    <!-- Input -->
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Ingresa las variantes (ej. color)"
+                      v-model="product.stock"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <!-- Phone -->
+                  <div class="form-group">
+                    <!-- Label -->
+                    <label class="form-label"> Descripción </label>
+
+                    <!-- Input -->
+                    <textarea
+                      class="form-control"
+                      id=""
+                      rows="3"
+                      placeholder="Ingresa una descripción"
+                      v-model="product.description"
+                    ></textarea>
                   </div>
                 </div>
 
@@ -268,18 +287,6 @@
               </div>
               <!-- / .row -->
 
-              <!-- Divider -->
-              <hr class="mt-0 mb-4" />
-
-              <!-- Button -->
-              <button
-                class="btn col-sm-5 col-md-5 col-lg-3"
-                style="background: rgb(47, 48, 67) 68.2%; color: white"
-                v-on:click="validate()"
-              >
-                Guardar cambios
-              </button>
-
               <!-- Divider || VARIANTS SECTION -->
               <hr class="mt-4 mb-5" />
 
@@ -378,11 +385,23 @@
                     </div>
                   </div>
                 </div>
+                <!-- Divider -->
+                <hr class="mt-5 mb-4" />
+    
+                <!-- Button -->
+                <button
+                  class="btn col-sm-5 col-md-5 col-lg-3"
+                  style="background: rgb(47, 48, 67) 68.2%; color: white"
+                  v-on:click="validate()"
+                >
+                  Guardar cambios
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <hr class="mt-5 mb-6" />
       <!-- / .row -->
     </div>
   </div>
@@ -461,7 +480,6 @@ export default {
 
       if ($event.target.files.length >= 1) {
         image = $event.target.files[0];
-        
       }
 
       if (image.size <= 2480000) {
@@ -583,6 +601,16 @@ export default {
           type: "error",
         });
       }
+      console.log(this.product.str_variant);
+
+      if (this.product.str_variant == undefined) {
+        this.$notify({
+          group: "foo",
+          title: "Error",
+          text: "Ingresa el tipo de variedades del producto",
+          type: "error",
+        });
+      }
       this.variant.provider = "none";
       this.variant.product = this.$route.params.id;
       this.variant.skuCode = this.SKUGen();
@@ -659,6 +687,7 @@ export default {
         })
         .then((response) => {
           this.getVariants();
+          this.getProducts();
           this.$notify({
             group: "foo",
             title: "",

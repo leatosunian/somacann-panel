@@ -120,7 +120,7 @@
                                 <!-- Avatar -->
                                 <a href="#!" class="avatar avatar-lg">
                                   <img
-                                    :src=item.image
+                                    :src=item.image 
                                     alt=""
                                     class="avatar-img"
                                   />

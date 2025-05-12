@@ -456,7 +456,7 @@
                           <div class="avatar">
                             <img
                               class="rounded avatar-img me-3"
-                              :src="$url + '/getImage/' + item.product.image"
+                              :src="item.product.image"
                               alt="..."
                             />
                           </div>
