@@ -1,8 +1,13 @@
 <template>
   <div>
     <template>
-      <div class="vld-parent" style="z-index: 999999 !important;">
-          <loading :active.sync="isLoading" :can-cancel="false" :is-full-page=true  :opacity=0.61 />
+      <div class="vld-parent" style="z-index: 999999 !important">
+        <loading
+          :active.sync="isLoading"
+          :can-cancel="false"
+          :is-full-page="true"
+          :opacity="0.61"
+        />
       </div>
     </template>
     <Sidebar />
@@ -41,58 +46,68 @@
             </div>
 
             <div class="p-4 row">
-                <div class="col-12 col-md-12 col-xl-3">
-                    <!-- First name -->
-                    <div class="form-group">
-              
-                      <!-- Label -->
-                      <label class="form-label">
-                        Estado del pedido
-                      </label>
-              
-                      <!-- Input -->
-                      <select name="status" class="form-select" v-model="status">
-                        <option value="En preparación" selected>En preparación</option>
-                        <option value="En camino" >En camino</option>
-                        <option value="Recibido" >Recibido</option>
-                      </select>
-              
-                    </div>
+              <div class="col-12 col-md-12 col-xl-3">
+                <!-- First name -->
+                <div class="form-group">
+                  <!-- Label -->
+                  <label class="form-label"> Estado del pedido </label>
+
+                  <!-- Input -->
+                  <select name="status" class="form-select" v-model="status">
+                    <option value="En preparación" selected>
+                      En preparación
+                    </option>
+                    <option value="En camino">En camino</option>
+                    <option value="Recibido">Recibido</option>
+                  </select>
                 </div>
+              </div>
 
-                <div class="col-12 col-md-12 col-xl-6">
-                    <div class="form-group">
-                        <!-- Label -->
-                        <label class="form-label">
-                        Código de seguimiento
-                        </label>
-                        <!-- Input -->
-                        <input type="string" class="form-control"  placeholder="Ingresa el código" v-model="order.trackingCode">
-                    </div>
-
+              <div class="col-12 col-md-12 col-xl-6">
+                <div class="form-group">
+                  <!-- Label -->
+                  <label class="form-label"> Código de seguimiento </label>
+                  <!-- Input -->
+                  <input
+                    type="string"
+                    class="form-control"
+                    placeholder="Ingresa el código"
+                    v-model="order.trackingCode"
+                  />
                 </div>
+              </div>
 
-                <div class="col-12 col-md-12 col-xl-3" >
-                    
-                    <button class="btn" style=" margin-top:30px; background: linear-gradient(-50.6deg, rgb(179 134 149) -18.3%, rgb(67, 54, 74) 16.4%, rgb(47, 48, 67) 68.2%, rgb(69 41 90) 99.1%); color :#f9f9f9 ;" v-on:click="validate()">
-                        Guardar cambios
-                    </button>
-                </div>
-
-                
-                
+              <div class="col-12 col-md-12 col-xl-3">
+                <button
+                  class="btn"
+                  style="
+                    margin-top: 30px;
+                    background: linear-gradient(
+                      -50.6deg,
+                      rgb(179 134 149) -18.3%,
+                      rgb(67, 54, 74) 16.4%,
+                      rgb(47, 48, 67) 68.2%,
+                      rgb(69 41 90) 99.1%
+                    );
+                    color: #f9f9f9;
+                  "
+                  v-on:click="validate()"
+                >
+                  Guardar cambios
+                </button>
+              </div>
             </div>
 
             <div class="row">
-                <div class="card-header" style="padding-left:35px">
-                    <!-- Title -->
-                    <h4 class="mb-0 card-header-title" style="font-size:17px">
-                      <b>Datos de la compra</b>
-                    </h4>
-                </div>
+              <div class="card-header" style="padding-left: 35px">
+                <!-- Title -->
+                <h4 class="mb-0 card-header-title" style="font-size: 17px">
+                  <b>Datos de la compra</b>
+                </h4>
+              </div>
               <div class="col-12 col-md-6">
                 <div class="card">
-                  <div class="card-body" style="padding: 0.8rem !important;">
+                  <div class="card-body" style="padding: 0.8rem !important">
                     <!-- List group -->
                     <div class="list-group list-group-flush my-n3">
                       <div class="list-group-item">
@@ -114,7 +129,6 @@
                                   .padStart(6, "000000")
                               }}
                             </time>
-
                           </div>
                         </div>
                         <!-- / .row -->
@@ -145,7 +159,7 @@
                           </div>
                           <div class="col-auto">
                             <!-- Text -->
-                            <small class="text-muted" >
+                            <small class="text-muted">
                               {{ order.client.name }}
                             </small>
                           </div>
@@ -173,7 +187,7 @@
               </div>
               <div class="col-12 col-md-6">
                 <div class="card">
-                  <div class="card-body" style="padding: 0.8rem !important;">
+                  <div class="card-body" style="padding: 0.8rem !important">
                     <!-- List group -->
                     <div class="list-group list-group-flush my-n3">
                       <div class="list-group-item">
@@ -203,10 +217,7 @@
                           </div>
                           <div class="col-auto">
                             <!-- Time -->
-                            <time
-                              class="small text-muted"
-                              
-                            >
+                            <time class="small text-muted">
                               {{ convertCurrency(order.shippingPrice) }}
                             </time>
                           </div>
@@ -223,41 +234,52 @@
                           <div class="col-auto">
                             <!-- Link -->
                             <span class="small text-muted">
-                              {{ convertCurrency(order.total + order.shippingPrice) }}
+                              {{
+                                convertCurrency(
+                                  order.total + order.shippingPrice
+                                )
+                              }}
                             </span>
                           </div>
                         </div>
                       </div>
-                      
+
                       <div class="list-group-item">
                         <div class="row align-items-center">
                           <div class="col">
                             <!-- Title -->
                             <h5 class="mb-0">Tipo de envío</h5>
                           </div>
-                          <div class="col-auto" v-if='order.shipMethod === "toAddress" '>
-                            <span class="small text-muted" >
+                          <div
+                            class="col-auto"
+                            v-if="order.shipMethod === 'toAddress'"
+                          >
+                            <span class="small text-muted">
                               Envío a domicilio
                             </span>
                           </div>
 
-                          <div class="col-auto" v-if='order.shipMethod === "toShipperBranch" '>
-
-                            <span class="small text-muted" >
+                          <div
+                            class="col-auto"
+                            v-if="order.shipMethod === 'toShipperBranch'"
+                          >
+                            <span class="small text-muted">
                               A sucursal de empresa logística
                             </span>
                           </div>
 
-                          <div class="col-auto" v-if='order.shipMethod === "toBranch" '>
+                          <div
+                            class="col-auto"
+                            v-if="order.shipMethod === 'toBranch'"
+                          >
                             <!-- Link -->
-                            
-                            <span class="small text-muted" >
+
+                            <span class="small text-muted">
                               Retiro por mi sucursal
                             </span>
                           </div>
                         </div>
                       </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -266,168 +288,174 @@
 
             <!-- SHIPPING DATA IF ADDRESS -->
             <div v-if="order.address" class="row">
-                <div class="card-header" style="padding-left:35px">
-                    <!-- Title -->
-                    <h4 class="mb-0 card-header-title" style="font-size:17px">
-                      <b>Datos de envío</b>
-                    </h4>
-                </div>
-                <div class="col-12 col-md-6">
-                  <div class="card">
-                    <div class="card-body" style="padding: 0.8rem !important;">
-                      <!-- List group -->
-                      <div class="list-group list-group-flush my-n3">
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <!-- Title -->
-                              <h5 class="mb-0">Nombre del destinatario</h5>
-                            </div>
-                            <div class="col-auto">
-                              <!-- Time -->
-                              <time
-                                class="small text-muted"
-                                datetime="1988-10-24"
-                              >
-                                {{order.address.surname}}, {{order.address.name}}
-                              </time>
-  
-                            </div>
+              <div class="card-header" style="padding-left: 35px">
+                <!-- Title -->
+                <h4 class="mb-0 card-header-title" style="font-size: 17px">
+                  <b>Datos de envío</b>
+                </h4>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card">
+                  <div class="card-body" style="padding: 0.8rem !important">
+                    <!-- List group -->
+                    <div class="list-group list-group-flush my-n3">
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">Nombre del destinatario</h5>
                           </div>
-                          <!-- / .row -->
+                          <div class="col-auto">
+                            <!-- Time -->
+                            <time
+                              class="small text-muted"
+                              datetime="1988-10-24"
+                            >
+                              {{ order.address.surname }},
+                              {{ order.address.name }}
+                            </time>
+                          </div>
                         </div>
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <!-- Title -->
-                              <h5 class="mb-0">N° de DNI</h5>
-                            </div>
-                            <div class="col-auto">
-                              <!-- Time -->
-                              <time
-                                class="small text-muted"
-                                datetime="2018-10-28"
-                              >
-                                {{ order.address.dni }}
-                              </time>
-                            </div>
+                        <!-- / .row -->
+                      </div>
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">N° de DNI</h5>
                           </div>
-                          <!-- / .row -->
+                          <div class="col-auto">
+                            <!-- Time -->
+                            <time
+                              class="small text-muted"
+                              datetime="2018-10-28"
+                            >
+                              {{ order.address.dni }}
+                            </time>
+                          </div>
                         </div>
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <!-- Title -->
-                              <h5 class="mb-0">Teléfono</h5>
-                            </div>
-                            <div class="col-auto">
-                              <!-- Text -->
-                              <small class="text-muted" >
-                                {{ order.address.phone }}
-                              </small>
-                            </div>
+                        <!-- / .row -->
+                      </div>
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">Teléfono</h5>
                           </div>
-                          <!-- / .row -->
+                          <div class="col-auto">
+                            <!-- Text -->
+                            <small class="text-muted">
+                              {{ order.address.phone }}
+                            </small>
+                          </div>
                         </div>
-                        <div class="list-group-item">
-                            <div class="row align-items-center">
-                              <div class="col">
-                                <!-- Title -->
-                                <h5 class="mb-0">Código Postal</h5>
-                              </div>
-                              <div class="col-auto">
-                                <!-- Text -->
-                                <small class="text-muted" >
-                                  {{ order.address.code }}
-                                </small>
-                              </div>
-                            </div>
-                            <!-- / .row -->
+                        <!-- / .row -->
+                      </div>
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">Código Postal</h5>
                           </div>
+                          <div class="col-auto">
+                            <!-- Text -->
+                            <small class="text-muted">
+                              {{ order.address.code }}
+                            </small>
+                          </div>
+                        </div>
+                        <!-- / .row -->
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-md-6">
-                  <div class="card">
-                    <div class="card-body" style="padding: 0.8rem !important;">
-                      <!-- List group -->
-                      <div class="list-group list-group-flush my-n3">
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <!-- Title -->
-                              <h5 class="mb-0">Ciudad</h5>
-                            </div>
-                            <div class="col-auto">
-                              <!-- Time -->
-                              <time
-                                class="small text-muted"
-                                datetime="1988-10-24"
-                              >
-                                {{ order.address.city }}
-                              </time>
-                            </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="card">
+                  <div class="card-body" style="padding: 0.8rem !important">
+                    <!-- List group -->
+                    <div class="list-group list-group-flush my-n3">
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">Ciudad</h5>
                           </div>
-                          <!-- / .row -->
-                        </div>
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <!-- Title -->
-                              <h5 class="mb-0">Provincia</h5>
-                            </div>
-                            <div class="col-auto">
-                              <!-- Time -->
-                              <time
-                                class="small text-muted"
-                                datetime="2018-10-28"
-                              >
-                                {{ order.address.province }}
-                              </time>
-                            </div>
+                          <div class="col-auto">
+                            <!-- Time -->
+                            <time
+                              class="small text-muted"
+                              datetime="1988-10-24"
+                            >
+                              {{ order.address.city }}
+                            </time>
                           </div>
-                          <!-- / .row -->
                         </div>
-  
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <!-- Title -->
-                              <h5 class="mb-0">Domicilio</h5>
-                            </div>
-                            <div class="col-auto">
-                              <!-- Link -->
-                              <span class="small text-muted">
-                                {{ order.address.address }}
-                              </span>
-                            </div>
+                        <!-- / .row -->
+                      </div>
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">Provincia</h5>
                           </div>
-                          <!-- / .row -->
+                          <div class="col-auto">
+                            <!-- Time -->
+                            <time
+                              class="small text-muted"
+                              datetime="2018-10-28"
+                            >
+                              {{ order.address.province }}
+                            </time>
+                          </div>
                         </div>
+                        <!-- / .row -->
+                      </div>
 
-                        <div class="list-group-item">
-                            <div class="row align-items-center">
-                              <div class="col">
-                                <!-- Title -->
-                                <h5 class="mb-0">Piso</h5>
-                              </div>
-                              <div class="col-auto">
-                                <!-- Link -->
-                                <span class="small text-muted" v-if="order.address.floor">
-                                  {{ order.address.floor }}
-                                </span>
-                                <span class="small text-muted" v-if="!order.address.floor">
-                                    No especificado
-                                </span>
-                              </div>
-                            </div>
-                            <!-- / .row -->
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">Domicilio</h5>
                           </div>
+                          <div class="col-auto">
+                            <!-- Link -->
+                            <span class="small text-muted">
+                              {{ order.address.address }}
+                            </span>
+                          </div>
+                        </div>
+                        <!-- / .row -->
+                      </div>
+
+                      <div class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col">
+                            <!-- Title -->
+                            <h5 class="mb-0">Piso</h5>
+                          </div>
+                          <div class="col-auto">
+                            <!-- Link -->
+                            <span
+                              class="small text-muted"
+                              v-if="order.address.floor"
+                            >
+                              {{ order.address.floor }}
+                            </span>
+                            <span
+                              class="small text-muted"
+                              v-if="!order.address.floor"
+                            >
+                              No especificado
+                            </span>
+                          </div>
+                        </div>
+                        <!-- / .row -->
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
 
             <!-- PRODUCTS -->
@@ -435,7 +463,7 @@
               <div class="card-header">
                 <!-- Title -->
                 <h4 class="mb-0 card-header-title">
-                  <b style="font-size:17px">Productos</b>
+                  <b style="font-size: 17px">Productos</b>
                 </h4>
               </div>
               <div class="table-responsive">
@@ -488,7 +516,6 @@
                 </table>
               </div>
             </div>
-
           </div>
         </div>
         <!-- / .row -->
@@ -497,15 +524,13 @@
   </div>
 </template>
 
-
-
 <script>
 import Sidebar from "@/components/Sidebar.vue";
 import axios from "axios";
 import moment from "moment";
 import currency_formatter from "currency-formatter";
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
   name: "OrderDetail",
@@ -513,8 +538,8 @@ export default {
     return {
       order: {},
       details: [],
-      status: '',
-      trackingCode: '',
+      status: "",
+      trackingCode: "",
       isLoading: true,
     };
   },
@@ -522,57 +547,58 @@ export default {
     this.getOrder();
   },
   methods: {
-    validate(){
-        if(this.order.trackingCode === ''){
-          return this.$notify({
-            group: 'foo',
-            title: 'Error',
-            text: 'Ingresá un código',
-            type: 'error'
-          });
-        } 
-        this.updateStatus()
-      },
-    updateStatus(){
-        const token = localStorage.getItem('token')
-        let data = {}
-        data.status = this.status
-        data.trackingCode = this.order.trackingCode
-        axios
+    validate() {
+      if (this.order.trackingCode === "") {
+        return this.$notify({
+          group: "foo",
+          title: "Error",
+          text: "Ingresá un código",
+          type: "error",
+        });
+      }
+      this.updateStatus();
+    },
+    updateStatus() {
+      const token = localStorage.getItem("token");
+      let data = {};
+      data.status = this.status;
+      data.trackingCode = this.order.trackingCode;
+      axios
         .put(this.$url + "/orders/change/" + this.$route.params.id, data, {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.$token}`,
+            Authorization: `Bearer ${this.$token}`,
           },
-        
-        }).then((response) => {
-            const {data} = response
-            this.$notify({
-              group: 'foo',
-              title: '',
-              text: 'Código de seguimiento enviado',
-              type: 'success'
-            });
-        }).catch( error => {
-            console.log(error.response.data.msg)
         })
+        .then((response) => {
+          const { data } = response;
+          this.$notify({
+            group: "foo",
+            title: "",
+            text: "Código de seguimiento enviado",
+            type: "success",
+          });
+        })
+        .catch((error) => {
+          console.log(error.response.data.msg);
+        });
     },
     getOrder() {
       axios
         .get(this.$url + "/orders/get/" + this.$route.params.id, {
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${this.$token}`,
+            Authorization: `Bearer ${this.$token}`,
           },
         })
         .then((response) => {
           const { data } = response;
-          this.isLoading = false
-          if(data.order[0]){
+          this.isLoading = false;
+          if (data.order[0]) {
             this.order = data.order[0];
           }
           this.details = data.details;
-          this.status = this.order.statusStr
+          this.status = this.order.statusStr;
         });
     },
     convertCurrency(number) {
@@ -581,11 +607,10 @@ export default {
     convertDate(item) {
       return moment(item).format("DD/MM/YYYY");
     },
-    
   },
   components: {
     Sidebar,
-    Loading
+    Loading,
   },
 };
 </script>

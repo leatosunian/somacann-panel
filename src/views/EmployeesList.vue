@@ -256,7 +256,6 @@
       },
 
       buscar(){
-        console.log(this.searchFilter);
         var term = new RegExp(this.searchFilter, 'i')
         this.employees = this.employeesSearch.filter( emp => 
         term.test(emp.name) || term.test(emp.userType) || term.test(emp.enabled)
@@ -322,7 +321,6 @@
         const {data} = response
         this.employees = data
         this.employeesSearch = this.employees
-        console.log(this.employees)
       }).catch( error => {
         console.log(error.response.data.msg)
         this.msm_error = error.response.data.msg

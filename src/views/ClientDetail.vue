@@ -443,8 +443,6 @@ export default {
           let totalEarnings = 0;
           let datos = this.orders.map((sale) => {
             const saleData = Object.entries(sale);
-            console.log(saleData);
-            console.log(saleData[4]);
             const saleStatus = saleData[4];
 
             if (saleStatus[1] == "approved") {

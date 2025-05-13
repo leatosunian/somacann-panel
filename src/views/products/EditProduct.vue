@@ -601,7 +601,6 @@ export default {
           type: "error",
         });
       }
-      console.log(this.product.str_variant);
 
       if (this.product.str_variant == undefined) {
         this.$notify({
@@ -628,7 +627,6 @@ export default {
         })
         .then((response) => {
           const { data } = response;
-          console.log(data);
 
           this.variant = {};
           this.getVariants();
