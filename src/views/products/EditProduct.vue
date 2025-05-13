@@ -360,6 +360,57 @@
                           <h4 class="mb-1"><b>Stock:</b> {{ item.stock }}</h4>
                         </div>
 
+                        <div class="col-auto" style="padding: 0">
+                          <button
+                            class="btn btn-sm"
+                            style="
+                              background: rgb(47, 48, 67) 68.2%;
+                              color: white;
+                            "
+                            type="button"
+                            @click="selectEditVariant(item._id)"
+                            v-b-modal="'edit-' + item._id"
+                          >
+                            Editar
+                          </button>
+
+                          <b-modal
+                            centered
+                            :id="'edit-' + item._id"
+                            title="BootstrapVue"
+                            title-html="<h4 class='card-header-title'><b>Editar variedad</b></h4>"
+                            @ok="editVariant(item)"
+                          >
+                            <p
+                              class=""
+                              style="font-weight: 600; font-size: 20px"
+                            >
+                              {{ item.variant }}
+                            </p>
+
+                            <div class="">
+                              <small class="text-muted"> Variedad </small>
+                              <input
+                                type="text"
+                                class="form-control"
+                                style="width: 100%"
+                                placeholder="ej. Rojo"
+                                v-model="editedVariant.variant"
+                              />
+                            </div>
+                            <div class="">
+                              <small class="text-muted"> Stock </small>
+                              <input
+                                type="number"
+                                class="form-control"
+                                style="width: 100%"
+                                placeholder="Cantidad"
+                                v-model="editedVariant.stock"
+                              />
+                            </div>
+                          </b-modal>
+                        </div>
+
                         <div class="col-auto">
                           <button
                             class="btn btn-sm btn-danger"
@@ -387,7 +438,7 @@
                 </div>
                 <!-- Divider -->
                 <hr class="mt-5 mb-4" />
-    
+
                 <!-- Button -->
                 <button
                   class="btn col-sm-5 col-md-5 col-lg-3"
@@ -448,6 +499,11 @@ export default {
       },
       uploadedImg: undefined,
       variant: {},
+      editedVariant: {
+        variant: "",
+        stock: 0,
+        _id: "",
+      },
       variants: [],
       categories: [],
       subcategories: [],
@@ -456,6 +512,10 @@ export default {
   },
 
   methods: {
+    selectEditVariant(id) {
+      const variantToEdit = this.variants.find((variant) => variant._id == id);
+      this.editedVariant = variantToEdit;
+    },
     getProducts() {
       const token = localStorage.getItem("token");
       axios
@@ -644,6 +704,43 @@ export default {
             group: "foo",
             title: "Error",
             text: error.response.data.msg,
+            type: "error",
+          });
+        });
+    },
+
+    editVariant(id) {
+      const token = localStorage.getItem("token");
+
+      const body = {
+        _id: id,
+        variant: this.editedVariant.variant,
+        stock: Number(this.editedVariant.stock),
+      };
+
+      axios
+        .put(this.$url + "/variants/edit", body, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          this.$notify({
+            group: "foo",
+            title: "",
+            text: "Variedad editada correctamente!",
+            type: "success",
+          });
+          this.getVariants();
+        })
+        .catch((error) => {
+          console.log(error);
+          this.msm_error = error.response.data.msg;
+          return this.$notify({
+            group: "foo",
+            title: "Error",
+            text: "No se pudo editar la variedad",
             type: "error",
           });
         });
