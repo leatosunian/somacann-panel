@@ -46,16 +46,7 @@
                   <button
                     type="button"
                     class="btn"
-                    style="
-                      background: linear-gradient(
-                        -50.6deg,
-                        rgb(179 134 149) -18.3%,
-                        rgb(67, 54, 74) 16.4%,
-                        rgb(47, 48, 67) 68.2%,
-                        rgb(69 41 90) 99.1%
-                      );
-                      color: #f9f9f9;
-                    "
+                    style="background: rgb(47, 48, 67) 68.2%; color: #f9f9f9"
                     v-on:click="validate()"
                   >
                     Añadir
@@ -112,13 +103,7 @@
                           class="text-white btn btn-sm btn-dark"
                           style="
                             margin-right: 1rem;
-                            background: linear-gradient(
-                              -50.6deg,
-                              rgb(179 134 149) -18.3%,
-                              rgb(67, 54, 74) 16.4%,
-                              rgb(47, 48, 67) 68.2%,
-                              rgb(69 41 90) 99.1%
-                            );
+                            background: rgb(47, 48, 67) 68.2%;
                             color: #f9f9f9;
                           "
                           v-on:click="openInput(item.category._id)"
@@ -163,13 +148,7 @@
                           type="button"
                           class="btn"
                           style="
-                            background: linear-gradient(
-                              -50.6deg,
-                              rgb(179 134 149) -18.3%,
-                              rgb(67, 54, 74) 16.4%,
-                              rgb(47, 48, 67) 68.2%,
-                              rgb(69 41 90) 99.1%
-                            );
+                            background: rgb(47, 48, 67) 68.2%;
                             color: #f9f9f9;
                           "
                           v-on:click="validateSubcat()"

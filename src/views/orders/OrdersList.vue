@@ -49,13 +49,7 @@
                   class="btn"
                   style="
                     width: 100%;
-                    background: linear-gradient(
-                      120.6deg,
-                      rgb(179 134 149) -18.3%,
-                      rgb(67, 54, 74) 16.4%,
-                      rgb(47, 48, 67) 68.2%,
-                      rgb(69 41 90) 99.1%
-                    );
+                    background: rgb(47, 48, 67) 68.2%;
                     color: #f9f9f9;
                   "
                   v-on:click="getOrders()"
@@ -139,13 +133,7 @@
                           :to="{ name: 'order', params: { id: item._id } }"
                           class="btn btn-sm"
                           style="
-                            background: linear-gradient(
-                              120.6deg,
-                              rgb(179 134 149) -18.3%,
-                              rgb(67, 54, 74) 16.4%,
-                              rgb(47, 48, 67) 68.2%,
-                              rgb(69 41 90) 99.1%
-                            );
+                            background: rgb(47, 48, 67);
                             color: #f9f9f9 !important;
                           "
                         >

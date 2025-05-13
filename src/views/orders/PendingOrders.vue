@@ -69,16 +69,7 @@
                         <router-link
                           :to="{ name: 'order', params: { id: item._id } }"
                           class="btn-sm btn"
-                          style="
-                            background: linear-gradient(
-                              -50.6deg,
-                              rgb(179 134 149) -18.3%,
-                              rgb(67, 54, 74) 16.4%,
-                              rgb(47, 48, 67) 68.2%,
-                              rgb(69 41 90) 99.1%
-                            );
-                            color: #f9f9f9;
-                          "
+                          style="background: rgb(67, 54, 74); color: #f9f9f9"
                         >
                           <span style="color: #f9f9f9 !important">Editar</span>
                         </router-link>
